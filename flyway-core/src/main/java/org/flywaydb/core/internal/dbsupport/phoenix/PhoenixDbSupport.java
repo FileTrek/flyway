@@ -37,6 +37,13 @@ public class PhoenixDbSupport extends DbSupport {
 
     public PhoenixDbSupport(Connection connection) {
         super(new JdbcTemplate(connection, Types.VARCHAR));
+        try {
+            // Set auto-commit on to force server-side execution for various queries
+            connection.setAutoCommit(true);
+        }
+        catch (SQLException e) {
+            LOG.error("Could not set autocommit on connection", e);
+        }
     }
 
     public String getDbName() {

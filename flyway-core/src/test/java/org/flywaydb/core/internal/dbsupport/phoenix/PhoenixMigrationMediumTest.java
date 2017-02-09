@@ -26,6 +26,7 @@ import org.junit.*;
 import org.junit.experimental.categories.Category;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -222,5 +223,10 @@ public class PhoenixMigrationMediumTest extends MigrationTestCase {
     @Override
     public void setCurrentSchema() throws Exception {}
 
+    // Make sure JDBC autocommit is enabled
+    @Test
+    public void validateAutocommit() throws Exception {
+        assertTrue(connection.getAutoCommit());
+    }
 
 }

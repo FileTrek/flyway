@@ -51,7 +51,7 @@ public abstract class MigrationTestCase {
     protected static final String BASEDIR = "migration/sql";
 
     protected DataSource dataSource;
-    private Connection connection;
+    protected Connection connection;
     protected DbSupport dbSupport;
 
     protected JdbcTemplate jdbcTemplate;
